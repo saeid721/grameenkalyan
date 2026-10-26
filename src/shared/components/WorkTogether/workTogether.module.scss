@@ -1,0 +1,101 @@
+@import '../../../style/utils/base';
+
+.workTogether {
+  padding: 10rem 15rem 10rem 15rem;
+  padding-right: 4rem; // right side space onek komano holo
+  display: flex;
+  flex-direction: row-reverse; // image on the right
+  align-items: center;
+  gap: 6rem;
+
+  @include response(s-desktop) {
+    padding: 8rem 10rem;
+    padding-right: 3rem;
+  }
+
+  @include response(tab-port) {
+    flex-direction: column;
+    gap: 4rem;
+    padding: 8rem 5rem;
+  }
+
+  @include response(phone) {
+    padding: 5rem;
+  }
+
+  @include response(s-phone) {
+    padding: 5rem 3rem;
+  }
+
+  .imgContainer {
+    flex: 1 1 70%; // aro boro image
+    height: 45rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.12);
+
+    @include response(tab-port) {
+      flex: none;
+      width: 100%;
+      height: 38rem;
+    }
+
+    @include response(phone) {
+      height: 30rem;
+      border-radius: 1.5rem;
+    }
+
+    .img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .contentContainer {
+    flex: 0 1 30%; // text column chhoto
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+
+    @include response(tab-port) {
+      width: 100%;
+      flex: none;
+    }
+
+    .eyebrow {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.25rem;
+      text-transform: uppercase;
+      color: $color-primary;
+    }
+
+    .heading {
+      margin: 0;
+      line-height: 1.15;
+      font-weight: 800;
+      font-size: clamp(3rem, 3.5vw, 4.8rem);
+      color: $color-primary;
+    }
+
+    .highlight {
+      color: $color-secondary-goldenrod;
+    }
+
+    .parag {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    .actions {
+      margin-top: 1.5rem;
+    }
+  }
+}

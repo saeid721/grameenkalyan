@@ -1,0 +1,19 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  optimizeFonts: true,
+  eslint: {
+    // এটি বিল্ডের সময় ESLint এরর ইগনোর করবে
+    ignoreDuringBuilds: true,
+  },
+  distDir: 'build',
+  images: {
+     unoptimized: true,
+    domains: ['admin.grameenkalyan.com', 'admin-grameenkalyan.stitbd.app', 'res.cloudinary.com'],
+  },
+  // experimental: {
+  //   appDir: true,
+  // },
+};
+
+module.exports = nextConfig;

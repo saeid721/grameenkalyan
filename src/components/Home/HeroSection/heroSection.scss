@@ -1,0 +1,217 @@
+@import '../../../style/utils/base';
+
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  // 1920x840 ratio, but never too short or too tall
+  aspect-ratio: 1920 / 840;
+  min-height: 440px;
+  max-height: 700px;
+
+  @include response(tab-port) {
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 420px;
+    height: 56svh;
+    max-height: 560px;
+  }
+
+  // Mobile: no fixed height, the section follows the image height
+  @include response(phone) {
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
+  // ========== SLIDER ==========
+  .slick-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    z-index: 10;
+    display: flex !important;
+    justify-content: center;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li button {
+      cursor: pointer;
+    }
+  }
+
+  .bgImage {
+    position: absolute;
+    inset: 0;
+
+    // Mobile: normal flow, so the image defines the parent's height
+    @include response(phone) {
+      position: relative;
+      inset: auto;
+    }
+
+    .slick-slider,
+    .slick-list,
+    .slick-track,
+    .slick-slide,
+    .slick-slide > div {
+      height: 100%;
+
+      @include response(phone) {
+        height: auto;
+      }
+    }
+
+    .imgContainer {
+      height: 100%;
+      width: 100%;
+
+      @include response(phone) {
+        height: auto;
+      }
+    }
+
+    .img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+
+      @include response(phone) {
+        height: auto;         // natural image ratio
+        object-fit: contain;  // no cropping
+        object-position: center;
+        display: block;       // removes the small gap under the image
+      }
+    }
+  }
+
+  // ========== CORNER PATTERN ==========
+  .layout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    pointer-events: none;
+
+    // was clamp(180px, 22vw, 480px)
+    height: clamp(120px, 15vw, 320px);
+    width: clamp(120px, 15vw, 320px);
+
+    @include response(tab-port) {
+      // was clamp(140px, 26vw, 200px)
+      height: clamp(100px, 18vw, 140px);
+      width: clamp(100px, 18vw, 140px);
+    }
+
+    @include response(phone) {
+      // was clamp(80px, 26vw, 115px)
+      height: clamp(60px, 19vw, 85px);
+      width: clamp(60px, 19vw, 85px);
+    }
+
+    .img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // ========== GLORY BADGE ==========
+  .glory {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+
+    height: clamp(130px, 15.5vw, 336px);
+    width: clamp(130px, 15.5vw, 336px);
+    top: clamp(40px, 5vw, 112px);
+    right: clamp(24px, 9vw, 208px);
+
+    @include response(tab-port) {
+      height: clamp(110px, 18vw, 150px);
+      width: clamp(110px, 18vw, 150px);
+      top: 24px;
+      right: 24px;
+    }
+
+    @include response(phone) {
+      height: clamp(72px, 22vw, 96px);
+      width: clamp(72px, 22vw, 96px);
+      top: 12px;
+      right: 12px;
+    }
+
+    .img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
+    }
+  }
+
+  // ========== TITLE / CONTENT ==========
+  .contentContainer {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+
+    // lighter green tint
+    background: linear-gradient(
+      90deg,
+      rgba(4, 60, 28, 0.35) 0%,
+      rgba(4, 60, 28, 0.12) 30%,
+      rgba(4, 60, 28, 0) 50%
+    );
+
+    @include response(phone) {
+      align-items: flex-end;
+      justify-content: center;
+      background: linear-gradient(
+        0deg,
+        rgba(4, 60, 28, 0.4) 0%,
+        rgba(4, 60, 28, 0.1) 45%,
+        rgba(4, 60, 28, 0) 100%
+      );
+    }
+
+    .imgContainer {
+      position: relative;
+      height: clamp(260px, 31vw, 672px);
+      width: clamp(260px, 31vw, 672px);
+      margin-left: clamp(24px, 6vw, 144px);
+
+      @include response(tab-port) {
+        height: clamp(220px, 40vw, 300px);
+        width: clamp(220px, 40vw, 300px);
+        margin-left: clamp(20px, 4vw, 48px);
+      }
+
+      @include response(phone) {
+        height: clamp(150px, 48vw, 220px);
+        width: clamp(150px, 48vw, 220px);
+        margin-left: 0;
+        margin-bottom: 36px; // stays above the dots
+      }
+
+      .img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        object-position: left center;
+        filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
+
+        @include response(phone) {
+          object-position: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import '../../../../style/utils/base';
+
+.photoCard {
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.8rem;
+  background-color: $color-text-grey;
+
+  .imgContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #000;
+
+    // ব্যাকগ্রাউন্ডে একই ছবির blur করা zoom-in version
+    .imgBg {
+      object-fit: cover;
+      filter: blur(2.5rem) brightness(0.6);
+      transform: scale(1.2);
+    }
+
+    // আসল ছবি — পুরোটা দেখা যাবে, কিছুই crop হবে না
+    .img {
+      object-fit: contain;
+      z-index: 1;
+    }
+  }
+
+  .title {
+    padding: 1rem;
+    text-align: justify;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+
+    h4 {
+      font-size: 2rem;
+      color: #333;
+      margin: 0;
+    }
+  }
+}

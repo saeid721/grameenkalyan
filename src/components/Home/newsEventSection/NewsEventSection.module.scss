@@ -1,0 +1,279 @@
+@import '../../../style/utils/base';
+
+.section {
+  padding: 60px 0;
+  background: #f7f5f2;
+}
+
+.wrapper {
+  // max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+  align-items: start;
+
+  @media (max-width: 1200px) {
+    padding: 0 40px;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 16px;
+  }
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tag {
+  color: #e0a132;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.heading {
+  color: #0b612d;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 14px;
+
+  @media (max-width: 640px) {
+    font-size: 26px;
+  }
+}
+
+.desc {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #666;
+}
+
+.viewAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  background: #0b612d;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: darken(#0b612d, 6%);
+  }
+}
+
+.sliderCol {
+  position: relative;
+  min-width: 0;
+
+  :global(.slick-list) {
+    margin: 0 -12px;
+    overflow: hidden;
+  }
+
+  :global(.slick-track) {
+    display: flex;
+  }
+
+  :global(.slick-slide) {
+    height: auto;
+  }
+
+  :global(.slick-slide)>div {
+    padding: 0 12px;
+    height: 100%;
+    display: flex; // <-- notun
+  }
+}
+
+.card {
+  flex: 1; // <-- height: 100% er poriborte
+  display: flex;
+
+  a {
+    text-decoration: none;
+    display: flex; // <-- block theke flex
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.cardBody {
+  background: #fff;
+  border-radius: 0 0 14px 14px;
+  padding: 16px 16px 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+
+  flex: 1; // <-- notun: image er niche baki jayga nibe
+  display: flex; // <-- notun
+  flex-direction: column; // <-- notun
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: auto; // <-- notun: arrow button shobsomoy niche thakbe
+}
+
+.navBtns {
+  position: absolute;
+  top: -56px;
+  right: 0;
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+
+  @media (max-width: 900px) {
+    position: static;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+}
+
+.navBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #d8d4cc;
+  background: #fff;
+  color: #0b612d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: #0b612d;
+  }
+}
+
+.navBtnNext {
+  background: #0b612d;
+  border-color: #0b612d;
+  color: #fff;
+
+  &:hover {
+    background: darken(#0b612d, 6%);
+  }
+}
+
+.navBtnDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.card {
+  height: 100%;
+
+  a {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+  }
+}
+
+.imageBox {
+  position: relative;
+  width: 100%;
+  padding-top: 62%;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  background: #ddd;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.dateBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #0b612d;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.day {
+  display: block;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.month {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  background: #fff;
+  border-radius: 0 0 14px 14px;
+  padding: 16px 16px 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  color: #0b612d;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 10px;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+
+  // 3 line er jayga sobsomoy rakhbe, tai title choto hole-o card soman thakbe
+  min-height: calc(1.5em * 3);
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.arrowBtn {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: #e0a132;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

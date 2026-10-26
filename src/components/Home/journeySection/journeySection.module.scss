@@ -1,0 +1,475 @@
+$green: #0f4a2c;
+$gold: #C3953D;
+$bg: #F7F5F2;
+$text: #5b6660;
+
+.journey {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) 2.4fr;
+  gap: 4rem;
+  align-items: stretch; // left column ar cards same line e shuru/shesh
+  padding: 7rem 6rem;
+  overflow: hidden;
+  background: $bg;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 5rem 1.5rem 4rem;
+  }
+}
+
+/* ---------- Soft background decoration ---------- */
+.decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glowLeft,
+.dotsRight {
+  position: absolute;
+  display: block;
+}
+
+/* top-right corner er holud dots */
+.dotsRight {
+  right: 4rem;
+  top: 3rem;
+  width: 11rem;
+  height: 7rem;
+  background-image: radial-gradient(rgba($gold, 0.65) 2px, transparent 2.5px);
+  background-size: 2.2rem 2.2rem;
+}
+
+.glowLeft {
+  left: -18rem;
+  top: 50%;
+  width: 56rem;
+  height: 56rem;
+  transform: translateY(-50%);
+  background: radial-gradient(circle,
+      rgba($green, 0.09) 0%,
+      rgba($green, 0.04) 40%,
+      transparent 70%);
+}
+
+/* ---------- Left column ---------- */
+.intro,
+.cards {
+  position: relative;
+  z-index: 1;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: 0.8rem;
+
+  &::before {
+    content: '';
+    width: 1.6rem;
+    height: 0.2rem;
+    background: $gold;
+  }
+}
+
+/* "29+ Years" */
+.heading {
+  font-size: clamp(3rem, 3.4vw, 4.4rem);
+  line-height: 1.05;
+  font-weight: 800;
+  color: $green;
+
+  .num {
+    color: $gold;
+  }
+}
+
+.sub {
+  margin-top: 1.2rem;
+  font-size: 1.8rem;
+  line-height: 1.35;
+  font-weight: 700;
+  color: $green;
+}
+
+.para {
+  margin-top: 1.2rem;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #666;
+}
+
+/* ---------- Statement + button (description er nicha) ---------- */
+.bottom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.4rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba($green, 0.15);
+
+  /* border er upor chhoto gold bar */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -0.2rem;
+    left: 0;
+    width: 5rem;
+    height: 0.3rem;
+    border-radius: 1rem;
+    background: $gold;
+  }
+}
+
+.statement {
+  margin: 0;
+  font-weight: 800; // "29+ Years" er moto same font (font-family inherit hobe)
+  font-size: clamp(1.7rem, 1.5vw, 2rem);
+  line-height: 1.35;
+  color: $green;
+
+  .highlight {
+    color: $gold;
+  }
+}
+
+/* Read more button choto */
+.btnWrap {
+
+  a,
+  button {
+    padding: 0.6rem 1.6rem !important;
+    font-size: 1.3rem !important;
+    line-height: 1.4 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    border-radius: 0.6rem !important;
+  }
+}
+
+/* ---------- Cards (pastel colored) ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.4rem;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  --c: #1a9a5b;
+  --bg: #e2f5e8;
+  --glow: rgba(26, 154, 91, 0.25);
+  --shadow: rgba(26, 154, 91, 0.16);
+  display: block;
+  text-decoration: none;
+  border-radius: 2.8rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, var(--bg) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 1.4rem 3.4rem var(--shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  &:hover {
+    transform: translateY(-0.8rem);
+    box-shadow: 0 2rem 4.5rem var(--glow);
+
+    .photo img {
+      transform: scale(1.08);
+    }
+
+    .arrow {
+      transform: translateX(0.4rem);
+    }
+  }
+
+  &.green {
+    --c: #1a9a5b;
+    --bg: #dff4e6;
+    --glow: rgba(26, 154, 91, 0.28);
+    --shadow: rgba(26, 154, 91, 0.16);
+  }
+
+  &.golden {
+    --c: #{$gold};
+    --bg: #f6ecd8;
+    --glow: #{rgba($gold, 0.3)};
+    --shadow: #{rgba($gold, 0.2)};
+  }
+
+  // &.blue {
+  //   --c: #1f7ae0;
+  //   --bg: #dcedff;
+  //   --glow: rgba(31, 122, 224, 0.28);
+  //   --shadow: rgba(31, 122, 224, 0.16);
+  // }
+
+  // &.purple {
+  //   --c: #7a3fcf;
+  //   --bg: #ebe1fb;
+  //   --glow: rgba(122, 63, 207, 0.28);
+  //   --shadow: rgba(122, 63, 207, 0.16);
+  // }
+}
+
+.cardInner {
+  position: relative;
+  height: 100%;
+  min-height: 40rem;
+  padding: 0.9rem 0.9rem 2.2rem;
+  overflow: hidden;
+  border-radius: 2.8rem;
+
+  /* soft leaf-shaped decoration at card bottom-left */
+  &::after {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    bottom: -1.5rem;
+    width: 9rem;
+    height: 9rem;
+    background: var(--c);
+    opacity: 0.12;
+    border-radius: 0 100% 0 100%;
+    transform: rotate(-10deg);
+    pointer-events: none;
+  }
+
+  h3 {
+    margin: 1rem 1.4rem 0.6rem;
+    padding-right: 3rem; // arrow button er niche text jeno na jay
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: $green;
+  }
+
+  p {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666;
+  }
+}
+
+.photo {
+  position: relative;
+  height: 20rem;
+  border-radius: 2.2rem 2.2rem 5rem 2.2rem;
+  overflow: hidden;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.12);
+
+  img {
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 6rem;
+  height: 6rem;
+  margin: -1.2rem 0 0 1.4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c) 0%, color-mix(in srgb, var(--c) 78%, #000) 100%);
+  color: #fff;
+  font-size: 2.6rem;
+  position: relative;
+  z-index: 2;
+  border: 0.4rem solid #fff;
+  box-shadow: 0 0.8rem 1.8rem var(--glow);
+}
+
+.arrow {
+  position: absolute;
+  right: 1.8rem;
+  bottom: 1.8rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 50%;
+  background: var(--c);
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow: 0 0.6rem 1.4rem var(--glow);
+  transition: transform 0.3s ease;
+}
+
+/* =========================================================
+   MOBILE / TABLET (<= 1100px)
+   ========================================================= */
+@media (max-width: 1100px) {
+  .journey {
+    padding: 4.5rem 1.6rem 4rem;
+    gap: 3.2rem;
+  }
+
+  .dotsRight {
+    display: none;
+  }
+
+  .glowLeft {
+    left: 50%;
+    top: 12rem;
+    width: 40rem;
+    height: 40rem;
+    transform: translateX(-50%);
+  }
+
+  /* ---- cards: 2 column tidy ---- */
+  .cards {
+    gap: 1.6rem;
+  }
+
+  .cardInner {
+    min-height: 28rem;
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
+  .photo {
+    height: 15rem;
+  }
+
+  /* ---- intro: center ---- */
+  .intro {
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+  }
+
+  .eyebrow {
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+
+    /* duipashe chhoto line */
+    &::after {
+      content: '';
+      width: 1.6rem;
+      height: 0.2rem;
+      background: $gold;
+    }
+  }
+
+  .heading {
+    font-size: 3.6rem;
+  }
+
+  .sub {
+    max-width: 34rem;
+    margin: 1rem auto 0;
+    font-size: 1.7rem;
+  }
+
+  .para {
+    max-width: 34rem;
+    margin: 1rem auto 0;
+    font-size: 1.45rem;
+    line-height: 1.65;
+  }
+
+  /* ---- statement + button ---- */
+  .bottom {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 34rem;
+    margin-top: 2.4rem;
+    padding-top: 2.2rem;
+    gap: 1.6rem;
+
+    /* gold bar majkhane */
+    &::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .statement {
+    font-size: 1.9rem;
+    line-height: 1.4;
+  }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 560px) {
+  .journey {
+    padding: 4rem 1.4rem 3.4rem;
+    gap: 2.8rem;
+  }
+
+  .heading {
+    font-size: 3.2rem;
+  }
+
+  .sub {
+    font-size: 1.6rem;
+  }
+
+  .para {
+    font-size: 1.4rem;
+  }
+
+  .statement {
+    font-size: 1.75rem;
+  }
+
+  .cards {
+    gap: 1.8rem;
+  }
+
+  .card {
+    border-radius: 2.4rem;
+
+    &:active {
+      transform: scale(0.98); // touch feedback
+    }
+  }
+
+  .cardInner {
+    min-height: auto;
+    border-radius: 2.4rem;
+    padding-bottom: 2.4rem;
+
+    h3 {
+      font-size: 2.2rem;
+    }
+  }
+
+  .photo {
+    height: 19rem;
+  }
+}
