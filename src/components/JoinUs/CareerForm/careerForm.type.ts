@@ -1,8 +1,8 @@
 export interface ICareerFormProps {
-  departmentsData: [
-    {
-      id: number;
-      name: string;
-    },
-  ];
+  departmentsData?:
+    | {
+        id: number;
+        name: string;
+      }[]
+    | null;
 }

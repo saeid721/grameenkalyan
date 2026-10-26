@@ -7,13 +7,11 @@ export default async function useFetch({ url, revalidateIn }: IUseFetchProps) {
     const res = await fetch(BASE_URL + url, { cache: 'no-cache' });
 
     if (!res.ok) {
-      throw new Error('Failed to fetch data');
+      return null;
     }
     const data = await res.json();
     return data;
   } catch (error: unknown) {
-    const errorInstance = error instanceof Error;
-    const errMessage = errorInstance ? error.message : 'Something went wrong';
-    return errMessage;
+    return null;
   }
 }
