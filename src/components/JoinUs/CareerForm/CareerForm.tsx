@@ -122,7 +122,7 @@ const CareerForm = ({ departmentsData }: ICareerFormProps) => {
                 })}
               >
                 <option value="">Select Department</option>
-                {departmentsData.map((data) => (
+                {(departmentsData ?? []).map((data) => (
                   <option key={data.id} value={data.name}>
                     {data.name}
                   </option>

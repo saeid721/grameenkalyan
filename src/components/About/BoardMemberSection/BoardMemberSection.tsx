@@ -18,10 +18,11 @@ const {
 } = style;
 
 const BoardMemberSection = ({ boardMembersData }: IBoardMemberSectionProps) => {
-  const chairman = boardMembersData.filter(
+  const safeData = boardMembersData ?? [];
+  const chairman = safeData.filter(
     (data) => data.designation === 'Chairman'
   );
-  const boardMembers = boardMembersData.filter(
+  const boardMembers = safeData.filter(
     (data) => data.designation !== 'Chairman'
   );
   const middleDataOne = handleMiddleIndex(boardMembers, 1);

@@ -48,7 +48,7 @@ const OurProudSection = ({
         </div>
         <div className={contentContainer}>
           <div className={gridContainer}>
-            {proudPresenceData.map((data) => (
+            {(proudPresenceData ?? []).map((data) => (
               <div key={data.id} className={content}>
                 <motion.p
                   style={{ position: 'relative' }}
